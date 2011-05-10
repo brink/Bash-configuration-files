@@ -99,7 +99,9 @@ if has("gui_running")
  colorscheme solarized "Set default scheme to brimley's favorite :)
  set background=dark
 else
-    colorscheme default
+ colorscheme solarized "Set default scheme to brimley's favorite :)
+ set background=light
+ "   colorscheme default
 
 endif
 set ts=2
