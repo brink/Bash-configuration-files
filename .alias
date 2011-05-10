@@ -1,1 +1,60 @@
-../.alias
+# some more ls aliases
+alias ll='ls -lF'
+alias la='ls -AF'
+#alias l='ls -CF'
+alias ssh='ssh -o ServerAliveInterval=30'
+alias sshfs='sshfs -o idmap=user'
+alias cd..='cd ..'
+
+alias sshhistory='history | grep ssh'
+alias sshistory='sshhistory'
+alias kill_jaron='mongrel_rails start'
+alias mr='mongrel_rails start'
+alias mrp='mr -p '
+alias cap14='cap _1.4.2_ '
+alias rm='rm -i'
+
+
+function mountremote {
+  if [ -z $1 ] || [ -z $2 ]; then
+    echo 'first param must be a hostname and second must be a mount location'
+  elif [ -d $2 ]; then
+    sshfs $1 $2
+  else
+    echo mountpoint does not exist
+  fi
+}
+
+function mount41() {
+  mount dot41
+#  mountremote staging:/vhosts dot41
+}
+
+function mountmp3s() {
+  mountremote 10.0.1.126:/exports/mp3 mp3
+}
+
+function mountcorkscrewhome() {
+  mountremote 10.0.0.1:/home/jonw corkscrew
+}
+
+# first param is destination
+function tunnel_through_corkscrew {
+
+  if [ -z $1 ]; then
+    echo "must have a destination host host and port! (host:port)"
+    echo "format is: tunnel_through_corkscrew <destination>:<portnumber>"
+    return 1
+  fi
+
+  echo "What local port do you want?" 
+  read p
+
+  echo "This computer will listen at port $p and all connections will connect to $1"
+  
+  ssh -L $p:$1 $(whoami)@10.0.0.1
+}
+
+alias get=git
+alias ack=ack-grep
+alias autospec='autospec 2>/dev/null'
