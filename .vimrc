@@ -135,3 +135,5 @@ set statusline+=%P                        " percentage of file
 
 set list
 set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·,eol:¶
+let g:solarized_visibility="low"
+
