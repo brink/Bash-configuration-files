@@ -98,6 +98,7 @@ if has("gui_running")
 " colorscheme herald "Set default scheme to brimley's favorite :)
  colorscheme solarized "Set default scheme to brimley's favorite :)
  set background=dark
+ set guifont=Meslo\ LG\ L\ DZ\ 13
 else
  colorscheme solarized "Set default scheme to brimley's favorite :)
  set background=light
